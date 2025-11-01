@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class RegisterController extends Controller
 {
-    /**
+        /**
      * Display the registration view.
      */
     public function create(): View
@@ -48,4 +48,5 @@ class RegisteredUserController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+    //
 }
