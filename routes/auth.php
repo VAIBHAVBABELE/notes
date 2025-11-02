@@ -25,25 +25,25 @@ Route::middleware('guest')->group(function () {
     Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
     // Password Reset Routes
-    Route::get('forgot-password', [PasswordController::class, 'create'])
+    Route::get('password', [PasswordController::class, 'create'])
         ->name('password.request');
 
     Route::post('forgot-password', [PasswordController::class, 'store'])
         ->name('password.email');
 
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+    Route::get('password/{token}', [NewPasswordController::class, 'create'])
         ->name('password.reset');
 
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
+    Route::post('password', [NewPasswordController::class, 'store'])
         ->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {
     // Email Verification Routes
-    Route::get('verify-email', [VerificationController::class, 'create'])
+    Route::get('verification', [VerificationController::class, 'create'])
         ->name('verification.notice');
 
-    Route::get('verify-email/{id}/{hash}', VerificationController::class)
+    Route::get('verification/{id}/{hash}', VerificationController::class)
         ->middleware(['signed', 'throttle:6,1'])
         ->name('verification.verify');
 
@@ -52,10 +52,10 @@ Route::middleware('auth')->group(function () {
         ->name('verification.send');
 
     // Password Confirmation
-    Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
+    Route::get('password', [ConfirmablePasswordController::class, 'show'])
         ->name('password.confirm');
 
-    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+    Route::post('password', [ConfirmablePasswordController::class, 'store']);
 
     // Password Update
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');

@@ -48,7 +48,7 @@ class PasswordController extends Controller
      */
     public function create(): View
     {
-        return view('auth.forgot-password');
+        return view('auth.password');
     }
 
     /**
@@ -80,7 +80,7 @@ class PasswordController extends Controller
      */
     public function createReset(Request $request): View
     {
-        return view('auth.reset-password', ['request' => $request]);
+        return view('auth.password', ['request' => $request]);
     }
 
     /**
@@ -125,7 +125,7 @@ class PasswordController extends Controller
      */
     public function show(): View
     {
-        return view('auth.confirm-password');
+        return view('auth.password');
     }
 
     /**
